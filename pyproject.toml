@@ -1,0 +1,12 @@
+[project]
+name = "alpha-ei-app"
+version = "4.2.0"
+description = "State Alpha Early Intervention application"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "jinja2>=3.1",
+    "psycopg[binary]>=3.2",
+    "python-multipart>=0.0.9",
+]
