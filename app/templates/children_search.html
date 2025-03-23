@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Child Search{% endblock %}
+{% block content %}
+<h1>Child Search</h1>
+<form method="get"><input name="q" value="{{ q }}" placeholder="Child ID or last name"><button>Search</button></form>
+<table>
+  <tr><th>Child ID</th><th>Name</th><th>DOB</th><th>Status</th></tr>
+  {% for row in rows %}
+  <tr><td><a href="/children/{{ row.child_id }}/summary">{{ row.child_id }}</a></td>
+      <td>{{ row.last_name }}, {{ row.first_name }}</td><td>{{ row.dob }}</td><td>{{ row.status }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
