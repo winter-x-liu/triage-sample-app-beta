@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Referral Intake{% endblock %}
+{% block content %}
+<h1>Referral Intake</h1>
+<form method="post">
+  <label>First name <input name="first_name" required></label>
+  <label>Last name <input name="last_name" required></label>
+  <label>DOB <input name="dob" type="date" required></label>
+  <label>County <select name="county_code">{% for c in counties %}<option value="{{ c.county_code }}">{{ c.name }}</option>{% endfor %}</select></label>
+  <label>Source <select name="source">{% for s in sources %}<option>{{ s }}</option>{% endfor %}</select></label>
+  <label>Received <input name="received_at" type="date" required></label>
+  <button>Save referral</button>
+</form>
+{% endblock %}
