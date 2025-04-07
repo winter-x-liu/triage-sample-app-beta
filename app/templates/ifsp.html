@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}IFSP{% endblock %}
+{% block content %}
+<h1>IFSP: child {{ child.child_id }}</h1>
+{% if plan %}
+<p>IFSP ID {{ plan.plan_id }} · {{ plan.status }} · {{ plan.start_date }} to {{ plan.end_date or "open" }} · Coordinator {{ plan.coordinator_user_id }}</p>
+<table><tr><th>Log</th><th>Provider</th><th>Service</th><th>Date</th><th>Units</th><th>Status</th></tr>
+{% for log in logs %}<tr><td>{{ log.log_id }}</td><td>{{ log.provider_user_id }}</td><td>{{ log.service_type_code }}</td><td>{{ log.service_date }}</td><td>{{ log.units }}</td><td>{{ log.status }}</td></tr>{% endfor %}
+</table>
+{% else %}<p>No IFSP on file.</p>{% endif %}
+{% endblock %}
