@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Service Log Entry{% endblock %}
+{% block content %}
+<h1>Service Log Entry</h1>
+{% if message %}<p class="message">{{ message }}</p>{% endif %}
+<form method="post">
+  <label>Child ID <input name="child_id" value="{{ child_id or '' }}" required></label>
+  <label>Service <select name="service_type_code">{% for t in service_types %}<option value="{{ t.service_type_code }}">{{ t.name }}</option>{% endfor %}</select></label>
+  <label>Service date <input name="service_date" type="date" required></label>
+  <label>Units (15 minutes each, at most {{ max_units }}) <input name="units" type="number" min="1" required></label>
+  <label>Notes <textarea name="notes"></textarea></label>
+  <button>Save log</button>
+</form>
+{% endblock %}
