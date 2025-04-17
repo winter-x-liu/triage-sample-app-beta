@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Caseload{% endblock %}
+{% block content %}
+<h1>Caseload: {{ user.user_id }}</h1>
+<table>
+  <tr><th>Child ID</th><th>Name</th><th>Assigned</th><th>IFSP</th><th>IFSP status</th><th>IFSP end</th></tr>
+  {% for row in rows %}
+  <tr><td><a href="/children/{{ row.child_id }}/summary">{{ row.child_id }}</a></td>
+      <td>{{ row.last_name }}, {{ row.first_name }}</td><td>{{ row.assigned_at }}</td>
+      <td>{{ row.plan_id or "" }}</td><td>{{ row.plan_status or "" }}</td><td>{{ row.end_date or "" }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
