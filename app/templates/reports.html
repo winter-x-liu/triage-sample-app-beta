@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Reports{% endblock %}
+{% block content %}
+<h1>Reports</h1>
+<h2>Children by county and status</h2>
+<table><tr><th>County</th><th>Status</th><th>Children</th></tr>
+{% for row in by_county %}<tr><td>{{ row.county }}</td><td>{{ row.status }}</td><td>{{ row.children }}</td></tr>{% endfor %}</table>
+<h2>Units logged in the last 30 days</h2>
+<table><tr><th>Service</th><th>Status</th><th>Units</th></tr>
+{% for row in units %}<tr><td>{{ row.service_type_code }}</td><td>{{ row.status }}</td><td>{{ row.units }}</td></tr>{% endfor %}</table>
+{% endblock %}
