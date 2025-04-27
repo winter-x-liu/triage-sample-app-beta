@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}Code Tables{% endblock %}
+{% block content %}
+<h1>Code Tables</h1>
+<h2>Service types</h2>
+<table><tr><th>Code</th><th>Name</th><th>Unit minutes</th><th>Rate</th></tr>
+{% for r in service_types %}<tr><td>{{ r.service_type_code }}</td><td>{{ r.name }}</td><td>{{ r.unit_minutes }}</td><td>{{ r.rate }}</td></tr>{% endfor %}</table>
+<h2>Outcome codes</h2>
+<table>{% for r in outcome_codes %}<tr><td>{{ r.outcome_code }}</td><td>{{ r.description }}</td></tr>{% endfor %}</table>
+<h2>Counties</h2>
+<table>{% for r in counties %}<tr><td>{{ r.county_code }}</td><td>{{ r.name }}</td></tr>{% endfor %}</table>
+<h2>Application settings</h2>
+<table>{% for r in app_config %}<tr><td>{{ r.key }}</td><td>{{ r.value }}</td><td>{{ r.description }}</td></tr>{% endfor %}</table>
+{% endblock %}
