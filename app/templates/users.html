@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}User Admin{% endblock %}
+{% block content %}
+<h1>User Admin</h1>
+<table><tr><th>User ID</th><th>Role</th><th>Active</th><th>Created</th><th>Screens</th></tr>
+{% for row in rows %}<tr><td>{{ row.user_id }}</td><td>{{ row.role }}</td><td>{{ row.active }}</td><td>{{ row.created_at.date() }}</td><td>{{ row.screens }}</td></tr>{% endfor %}</table>
+{% endblock %}
