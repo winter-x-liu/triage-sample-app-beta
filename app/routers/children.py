@@ -3,7 +3,7 @@
 from fastapi import APIRouter, HTTPException, Request
 
 from app import db
-from app.models import Child, ServicePlan
+from app.models import Child, Referral, ServicePlan
 from app.permissions import current_user, require_screen
 from app.templating import templates
 
@@ -43,6 +43,7 @@ def child_summary(child_id: int, request: Request):
         if child is None:
             raise HTTPException(status_code=404, detail=f"no child {child_id}")
         plan = ServicePlan.current(conn, child_id)
+        referral = Referral.latest(conn, child_id)
         caseload = db.query(
             conn,
             "SELECT user_id, assigned_at, released_at FROM caseloads WHERE child_id = %s"
@@ -53,6 +54,8 @@ def child_summary(child_id: int, request: Request):
             "user": user,
             "child": child,
             "plan": plan,
+            "referral_source": referral.source,
+            "referral_received": referral.received_at,
             "caseload": caseload,
         }
         return templates.TemplateResponse(request, "child_summary.html", context)

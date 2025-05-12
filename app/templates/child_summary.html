@@ -2,6 +2,8 @@
 {% block content %}
 <h1>Child Summary: {{ child.child_id }}</h1>
 <p>Child Name: {{ child.first_name }} {{ child.last_name }} · DOB: {{ child.dob }} · Status: {{ child.status }} · County: {{ child.county_code }}</p>
+<h2>Referral</h2>
+<p>Source: {{ referral_source }} · Received: {{ referral_received }}</p>
 <h2>IFSP</h2>
 {% if plan %}<p>IFSP ID {{ plan.plan_id }} · {{ plan.status }} · {{ plan.start_date }} to {{ plan.end_date or "open" }} · Coordinator {{ plan.coordinator_user_id }}</p>
 {% else %}<p>No IFSP on file.</p>{% endif %}
