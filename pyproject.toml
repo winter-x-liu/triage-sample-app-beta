@@ -1,7 +1,7 @@
 [project]
-name = "alpha-ei-app"
-version = "4.2.0"
-description = "State Alpha Early Intervention application"
+name = "beta-ei-app"
+version = "4.3.0"
+description = "State Beta Early Intervention application"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115",

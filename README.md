@@ -1,6 +1,6 @@
-# State Alpha Early Intervention application
+# State Beta Early Intervention application
 
-Version 4.2. The web application State Alpha's Early Intervention (EI) program uses to
+Version 4.3. The web application State Beta's Early Intervention (EI) program uses to
 track children from referral through evaluation, the Individualized Family Service Plan
 (IFSP), service logs, and service coordinators' caseloads. FastAPI, Jinja2 templates,
 Postgres through psycopg.
@@ -44,6 +44,6 @@ request id without the log stream.
 ## Running
 
 ```
-export DATABASE_URL=postgresql://app@db/mockapp APP_SCHEMA=app_alpha
+export DATABASE_URL=postgresql://app@db/mockapp APP_SCHEMA=app_beta
 uvicorn app.main:app
 ```
