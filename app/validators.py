@@ -1,6 +1,6 @@
 """Business rules checked before a row is written."""
 
-DEFAULT_MAX_UNITS = 8  # 15-minute units per service log; app_config.max_units_per_log overrides
+DEFAULT_MAX_UNITS = 16  # 15-minute units per service log; app_config.max_units_per_log overrides
 
 
 class ValidationError(ValueError):

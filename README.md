@@ -35,7 +35,7 @@ request id without the log stream.
 
 ## Policies this version implements
 
-- A service log may not exceed 8 units of 15 minutes. The cap is read from
+- A service log may not exceed 16 units of 15 minutes. The cap is read from
   `app_config.max_units_per_log`; a log over the cap is saved with status Rejected so
   the attempt is auditable.
 - A child is released from the service coordinator's caseload automatically 30 days
