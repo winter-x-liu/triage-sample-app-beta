@@ -1,6 +1,7 @@
 """Caseload screen: the children assigned to the signed-in service coordinator."""
 
 from fastapi import APIRouter, Request
+from fastapi.responses import RedirectResponse
 
 from app import db
 from app.permissions import current_user, require_screen
@@ -27,3 +28,18 @@ def caseload(request: Request):
             (user["user_id"],),
         )
         return templates.TemplateResponse(request, "caseload.html", {"user": user, "rows": rows})
+
+
+@router.post("/caseload/{child_id}/release")
+def release(child_id: int, request: Request):
+    """Release a child from the signed-in coordinator's caseload; State Beta releases by hand."""
+    with db.connect() as conn:
+        user = current_user(request, conn)
+        require_screen(conn, user, "Caseload")
+        conn.execute(
+            "UPDATE caseloads SET released_at = CURRENT_DATE"
+            " WHERE user_id = %s AND child_id = %s AND released_at IS NULL",
+            (user["user_id"], child_id),
+        )
+        conn.commit()
+    return RedirectResponse("/caseload", status_code=303)

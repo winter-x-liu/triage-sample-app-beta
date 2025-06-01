@@ -38,8 +38,8 @@ request id without the log stream.
 - A service log may not exceed 16 units of 15 minutes. The cap is read from
   `app_config.max_units_per_log`; a log over the cap is saved with status Rejected so
   the attempt is auditable.
-- A child is released from the service coordinator's caseload automatically 30 days
-  after the IFSP end date (`jobs/release_caseloads.py`, run nightly).
+- A child stays on the service coordinator's caseload until the coordinator releases
+  the assignment from the Caseload screen; there is no automatic release.
 
 ## Running
 
