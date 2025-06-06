@@ -54,8 +54,8 @@ def child_summary(child_id: int, request: Request):
             "user": user,
             "child": child,
             "plan": plan,
-            "referral_source": referral.source,
-            "referral_received": referral.received_at,
+            "referral_source": referral.source if referral else None,
+            "referral_received": referral.received_at if referral else None,
             "caseload": caseload,
         }
         return templates.TemplateResponse(request, "child_summary.html", context)
