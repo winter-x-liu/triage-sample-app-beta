@@ -27,6 +27,8 @@ def caseload(request: Request):
             " ORDER BY ch.last_name, ch.first_name",
             (user["user_id"],),
         )
+        # Long caseloads: show the children with an active IFSP only.
+        rows = [row for row in rows if row["plan_status"] == "Active"]
         return templates.TemplateResponse(request, "caseload.html", {"user": user, "rows": rows})
 
 
